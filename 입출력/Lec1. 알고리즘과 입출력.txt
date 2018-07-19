@@ -21,6 +21,8 @@ C++에서 cin, cout 사용 시
 ios_base::sync_with_stdio(false); 적용 시
 scanf, printf와 비슷한 성능.
 C++11, STL은 필수적으로 사용할 필요가 있다.
+--> cin.tie(NULL);
+--> cin.sync_with_stdio(false);
 
 시간 복잡도
  - 작성한 코드가 시간이 얼마나 걸릴지 예상할 수 있다.
