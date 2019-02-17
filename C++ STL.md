@@ -42,7 +42,7 @@
    + utility Header 에 존재
    + 문제에서 주어진 정렬조건이 pair의 정렬조건과 같은경우
    + **대소 비교 및 sort에의한 정렬에서 : 첫번째 인자 기준, 첫번째가 같으면 두번째인자로 판단**
-   ```
+   ```c++
    // pair 인스턴스 만들기
    pair<int, string> p1 = make_pair(1,"BlockDMask");    
    // pair 형태의 vector 선언
@@ -50,3 +50,72 @@
    cin >> point[i].first;
    cin >> point[i].second;
    ```
+## C++ Tuple
+ - pair를 확장한 자료형. pair가 2개의 값을 한 번에 저장할 수 있다면, tuple은 제한이 없다.
+ - 3개 이상의 서로 다른 자료형을 하나의 변수로 묶을 때 사용가능하다.
+ - 아래 코드 예제와 같이 튜플을 생성할 수 있고, get<n>(tp) 형태로 내부 값을 가져올 수 있다.
+ ```c++
+    #include <iostream>
+    #include <tuple>
+    using namespace std;
+
+    int main(){
+
+        tuple<int, int, int> tp = make_tuple(2,3,4);
+
+        cout << get<0>(tp) << '\n';
+        cout << get<1>(tp) << '\n';
+        cout << get<2>(tp) << '\n';
+
+        //또는,
+        int a, b, c;
+        tie(a,b,c) = tp;
+
+
+        return 0;
+    }
+ ```
+
+## C++ next_permutation
+ - <algorithm> 헤더 파일에 포함되어 있다.
+ - next_permutation(v.begin(), v.end()) 형태로 사용한다.
+ - v 순열에서 인자로 넘어간 범위에 해당하는 다음 순열을 구하고 true를 반환한다. 다음 순열이 없다면, false를 반환한다.
+ - 이와 반대되는 함수로 prev_permutation()이 있다.
+ - next_permutation을 사용해서 조합, 순열 문제를 풀 수 있다.
+  + 조합 : n개중에서 m개를 선택하는 문제 등
+
+## priority_queue
+ - <queue> 헤더 파일에 포함되어 있다.
+ - priority_queue<데이터 타입> [변수 이름]; 형태로 선언한다.
+ - pq의 top()은 정렬된 큐 중 가장 우선순위가 높은 것을 반환한다.
+ - 선언 시에 정렬기준을 넣어줘서 우선순위를 바꿔줄 수 있다.
+ - 멤버함수로는 pq.empty(), pq.top(), pq.pop(), pq.push() 등이 있다.
+
+## vector의 중복제거 방법
+ - unique와 erase활용
+ - unique와 erase를 활용하기 위해서는 먼저, 중복을 제거하려는 벡터가 정렬상태이어야 한다.
+ - unique(vector.begin(), vector.end()) 함수는 연속된 중복 원소를 vector의 제일 뒷부분으로 쓰레기값으로 보내버린다.
+ - unique함수는, 보내버린 쓰레기값의 첫번째 위치를 반환한다. 이를 활용해서 중복값을 지울 수 있다.
+ - erase() 함수는 첫번재 인자로 시작위치를 받고, 두번째 인자로 끝위치를 받아서 해당 범위의 배열을 지운다.
+ - 즉 중복을 제거하는 예시는 아래와 같다.
+ ```c++
+ #include<algorithm>
+ #include<vector>
+ using namespace std;
+
+ int main(){
+
+     vector<int> s;
+
+     s.push_back(1);
+     s.push_back(1);
+     s.push_back(2);
+     s.push_back(2);
+
+    sort(s.begin(), s.end());
+    s.erase(unique(s.begin(), s.end()), s.end());
+
+    return 0;
+ }
+ ```
+ - 위의 예시에서 s벡터에는 1,2라는 원소만 남게 된다.
