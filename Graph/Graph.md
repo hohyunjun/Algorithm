@@ -23,7 +23,7 @@
   + **vector 이용 시, vector<int> a(10)은 1차원 배열, vector<int> a[10]은 2차원 배열**
   + 공간 복잡도는 O(E)  (E는 간선의 개수)
   + 인접 리스트를 사용해 가중치를 표현할 경우는 아래와 같이 표현한다.
-  ```
+  ```cpp
   #include <cstdio>
   #include <vector>
   using namespace std;
