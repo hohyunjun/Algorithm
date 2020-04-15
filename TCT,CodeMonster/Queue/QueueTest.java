@@ -75,6 +75,14 @@ public class QueueTest{
             System.out.println(dq.pollFirst());
         }
 
+        System.out.println("===========Deque Peek================");
+
+        dq.offerLast(1);
+        dq.offerLast(2);
+        dq.offerLast(3);
+
+        System.out.println(dq.peek());
+
 
 
 

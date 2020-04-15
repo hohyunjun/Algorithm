@@ -25,5 +25,6 @@ public class BOJ3052_ArrList{
 
         System.out.println(cnt);
 
+
     }
 }
